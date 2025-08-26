@@ -19,63 +19,68 @@ Include the neural network model diagram.
 ## DESIGN STEPS
 
 ### STEP 1:
-Write your own steps
+Load and preprocess the dataset (handle missing values, encode categorical features, scale numeric data).
 
 ### STEP 2:
+Split the dataset into training and testing sets, convert to tensors, and create DataLoader objects
 
 ### STEP 3:
+Build the neural network model, train it with CrossEntropyLoss and Adam optimizer, then evaluate with confusion matrix and classification report.
 
 
 ## PROGRAM
 
-### Name: 
-### Register Number:
-
-```python
-class PeopleClassifier(nn.Module):
-    def __init__(self, input_size):
-        super(PeopleClassifier, self).__init__()
-        #Include your code here
-
-
+### Name: HARISHKUMAR R
+### Register Number: 212223230073
+```py
+class NeuralNetwork(torch.nn.Module):
+    def __init__(self, size):
+        super().__init__()
+        self.fc1 = torch.nn.Linear(size, 32)
+        self.fc2 = torch.nn.Linear(32, 16)
+        self.fc3 = torch.nn.Linear(16, 4)
+        self.relu = torch.nn.ReLU()
 
     def forward(self, x):
-        #Include your code here
-        
+        x = self.relu(self.fc1(x))
+        x = self.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
 
-```
-```python
 # Initialize the Model, Loss Function, and Optimizer
+model=NeuralNetwork(x_train.shape[1])
+loss_fn=torch.nn.CrossEntropyLoss()
+optimizer=torch.optim.Adam(model.parameters(),lr=0.001)
 
 
+
+def train_model(model, train_loader, criterion, optimizer, epochs=100):
+    for epoch in range(epochs):
+        model.train()
+        for X_batch, y_batch in train_loader:
+            optimizer.zero_grad()
+            outputs = model(X_batch)
+            loss = criterion(outputs, y_batch)
+            loss.backward()
+            optimizer.step()
+
+        if (epoch+1) % 10 == 0:
+            print(f"Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}")
 ```
-```python
-def train_model(model, train_loader, criterion, optimizer, epochs):
-    #Include your code here
-```
-
-
 
 ## Dataset Information
-
-Include screenshot of the dataset
+![alt text](image.png)
 
 ## OUTPUT
-
-
+![alt text](<Screenshot 2025-08-26 121658.png>)
 
 ### Confusion Matrix
-
-Include confusion matrix here
+![alt text](<Screenshot 2025-08-26 121709.png>)
 
 ### Classification Report
-
-Include Classification Report here
-
+![alt text](<Screenshot 2025-08-26 121717.png>)
 
 ### New Sample Data Prediction
-
-Include your sample input and output here
-
+![alt text](<Screenshot 2025-08-26 121724.png>)
 ## RESULT
-Include your result here
+The neural network model was successfully built and trained to handle classification tasks.
