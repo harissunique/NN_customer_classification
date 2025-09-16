@@ -72,15 +72,15 @@ def train_model(model, train_loader, criterion, optimizer, epochs=100):
 ![alt text](image.png)
 
 ## OUTPUT
-![alt text](<Screenshot 2025-08-26 121658.png>)
+![alt text](<Screenshot 2025-09-16 105428.png>)
 
 ### Confusion Matrix
-![alt text](<Screenshot 2025-08-26 121709.png>)
+![alt text](<Screenshot 2025-09-16 105512.png>)
 
 ### Classification Report
-![alt text](<Screenshot 2025-08-26 121717.png>)
+![alt text](<Screenshot 2025-09-16 105517.png>)
 
 ### New Sample Data Prediction
-![alt text](<Screenshot 2025-08-26 121724.png>)
+![alt text](<Screenshot 2025-09-16 105524.png>)
 ## RESULT
 The neural network model was successfully built and trained to handle classification tasks.
